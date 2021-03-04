@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  Web: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0915bcb5fa77e4892"
+      InstanceType: t2.micro
+      Tags:
+      - Key: "Name"
+        Value: "LaunchedWithCloudFormation"

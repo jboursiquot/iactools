@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  VPC1:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: "10.0.0.0/16"
+      Tags:
+        - Key: Name
+          Value: ManagedByCloudFormation
+
+  Subnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: "10.0.1.0/24"
+      VpcId: !Ref VPC1
+      Tags:
+        - Key: Name
+          Value: ManagedByCloudFormation
+
+  Web1: 
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: "ami-0915bcb5fa77e4892"
+      InstanceType: t2.micro
+      SubnetId: !Ref Subnet1
+      Tags:
+      - Key: "Name"
+        Value: "LaunchedWithCloudFormation"
